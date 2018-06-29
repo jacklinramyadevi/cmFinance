@@ -1,0 +1,61 @@
+import axios from 'axios';
+import Vuex from 'vuex';
+import cookie from '../router/cookie.js';
+export default{
+	financeRepay(detail,url,thisVal){//'detail/findRepayStatistic'
+		axios({
+			method:'post',
+			url:url,
+			data:detail,
+			withCredentials:true
+		}).then(function(res){
+      if(res.data.success== true){
+				thisVal.financeRepay(res.data.result);
+			}
+		}).catch(function(error){
+			thisVal.$Message.warning('获取还款数据异常');
+		})
+	},
+	/*financeRepayDetail(detail,thisVal){
+		axios({
+			method:'post',
+			url:'detail/findRepayStatisOfRepayDetail',
+			data:detail,
+			withCredentials:true
+		}).then(function(res){
+			if(res.data.resCode==1){
+				thisVal.financeRepayDetail(res.data.result);
+			}
+		}).catch(function(error){
+			thisval.$Message.warning('获取还款数据异常');
+		})
+	},
+	financeAlready(detail,thisVal){
+		axios({
+			method:'post',
+			url:'detail/findAlreadyClrStatistic',
+			data:detail,
+			withCredentials:true
+		}).then(function(res){
+			if(res.data.resCode==1){
+				thisVal.financeAlready(res.data.result);
+			}
+		}).catch(function(error){
+			thisval.$Message.warning('获取还款数据异常');
+		})
+	},
+	financeAlreadyClr(detail,thisVal){
+		axios({
+			method:'post',
+			url:'detail/findAlreadyClrStatisOfDetail',
+			data:detail,
+			withCredentials:true
+		}).then(function(res){
+			if(res.data.resCode==1){
+				thisVal.financeAlreadyClr(res.data.result);
+			}
+		}).catch(function(error){
+			thisval.$Message.warning('获取还款数据异常');
+		})
+	}*/
+}
